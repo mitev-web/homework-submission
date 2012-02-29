@@ -1,0 +1,25 @@
+﻿@model IEnumerable<HomeworkSubmission.DAL.Topic>
+
+@foreach (var item in Model) {
+    <tr data-pkey="@item.ID">
+        <td>
+            @Html.DisplayFor(modelItem => item.Cours.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActiveFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActiveTo)
+        </td>
+        <td class="rowControl hidden">
+            <a href="#makeRowEditable" class="makeRowEditable">Edit</a> |
+            <a href="#deleteRow" class="deleteRow">Delete</a>
+        </td>
+    </tr>
+}

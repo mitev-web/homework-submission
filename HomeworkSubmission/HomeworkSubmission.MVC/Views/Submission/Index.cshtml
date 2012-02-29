@@ -1,0 +1,39 @@
+﻿@using HomeworkSubmission.MVC.Models
+@model SubmissionViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>
+  You are submitting homework for:
+</h2>
+<h3>
+  Academy ID: @Session["AcademyID"]
+</h3>
+<h3>
+  Course: @Session["CourseName"]
+</h3>
+<h3>
+  Topic: @Session["TopicName"]
+</h3>
+<br />
+
+
+@using (Html.BeginForm("Create", "Submission", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="editor-label">
+      @Html.LabelFor(m => m.FileUpload)
+    </div>
+    @Html.ValidationMessageFor(m => m.FileUpload)
+
+    @Html.TextBoxFor(m => m.FileUpload, new { type = "file" })
+
+
+
+    <input type="submit" />
+    
+    <p>
+      * only zip / rar allowed, limit 4MB
+    </p>
+}

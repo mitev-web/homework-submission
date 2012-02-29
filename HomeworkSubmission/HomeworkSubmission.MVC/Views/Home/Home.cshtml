@@ -1,0 +1,48 @@
+﻿@using HomeworkSubmission.MVC.Models
+@model StudentViewModel
+
+@{
+    ViewBag.Title = "My Courses";
+}
+<script>
+  $(document).ready(function () {
+      $('#courseID').val($('#Courses option:selected').val());
+
+      $('#Topics').change(function () {
+          $('#topicID').val($(this).attr('value'));
+          this.form.submit();
+      });
+
+  });
+</script>
+<p>@ViewBag.Hello</p>
+<div class=message-error>@ViewBag.Message</div>
+
+<h3>
+  Please select a course:
+</h3>
+@using (Html.BeginForm("Home", "Home", FormMethod.Get, new { enctype = "multipart/form-data" }))
+{
+    @Html.DropDownListFor(x => x.Courses, new SelectList(Model.Courses, "ID", "Name"),
+        new { onchange = "this.form.submit();" })
+}
+<h3>
+  Select a topic for this course:
+</h3>
+@using (Html.BeginForm("Index", "Submission", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.DropDownList("Topics", new SelectList(ViewBag.Topics, "ID", "Name"), "--Select a Topic---");
+    @Html.Hidden("courseID", "")
+    @Html.Hidden("topicID", "")
+    
+    @Html.ValidationSummary(true)
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<HomeworkSubmission.DAL.Submission>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Student Submissions</h2>
+
+<table>
+    <tr>
+        <th>
+           AcademyID
+        </th>
+        <th>
+            Course Name
+        </th>
+        <th>
+            Topic Name
+        </th>
+        <th>
+            UploadDate
+        </th>
+        <th>
+            FileType
+        </th>
+        <th>
+           Download
+        </th>
+   
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.AcademyID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cours.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Topic.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UploadDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Extension)
+        </td>
+        <td>
+           <a href="../@item.FilePath.ToString().Trim().@item.Extension")>Download</a>
+        </td>
+
+    </tr>
+}
+
+</table>

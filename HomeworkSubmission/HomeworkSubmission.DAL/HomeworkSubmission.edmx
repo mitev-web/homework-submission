@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HomeworkSubmissionModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="HomeworkSubmissionModelStoreContainer">
+          <EntitySet Name="Courses" EntityType="HomeworkSubmissionModel.Store.Courses" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Students" EntityType="HomeworkSubmissionModel.Store.Students" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StudentsCourses" EntityType="HomeworkSubmissionModel.Store.StudentsCourses" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Submissions" EntityType="HomeworkSubmissionModel.Store.Submissions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="HomeworkSubmissionModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Topics" EntityType="HomeworkSubmissionModel.Store.Topics" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="HomeworkSubmissionModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_StudentsCourses_Courses" Association="HomeworkSubmissionModel.Store.FK_StudentsCourses_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="StudentsCourses" EntitySet="StudentsCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentsCourses_Students" Association="HomeworkSubmissionModel.Store.FK_StudentsCourses_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentsCourses" EntitySet="StudentsCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Submissions_Courses" Association="HomeworkSubmissionModel.Store.FK_Submissions_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Submissions" EntitySet="Submissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Submissions_Students" Association="HomeworkSubmissionModel.Store.FK_Submissions_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Submissions" EntitySet="Submissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Submissions_Topics" Association="HomeworkSubmissionModel.Store.FK_Submissions_Topics">
+            <End Role="Topics" EntitySet="Topics" />
+            <End Role="Submissions" EntitySet="Submissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Topics_Courses" Association="HomeworkSubmissionModel.Store.FK_Topics_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Topics" EntitySet="Topics" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="AcademyID" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="StudentsCourses">
+          <Key>
+            <PropertyRef Name="StudentID" />
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Submissions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="TopicID" Type="int" Nullable="false" />
+          <Property Name="UploadDate" Type="date" Nullable="false" />
+          <Property Name="Extension" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Topics">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ActiveFrom" Type="date" />
+          <Property Name="ActiveTo" Type="date" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_StudentsCourses_Courses">
+          <End Role="Courses" Type="HomeworkSubmissionModel.Store.Courses" Multiplicity="1" />
+          <End Role="StudentsCourses" Type="HomeworkSubmissionModel.Store.StudentsCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StudentsCourses">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentsCourses_Students">
+          <End Role="Students" Type="HomeworkSubmissionModel.Store.Students" Multiplicity="1" />
+          <End Role="StudentsCourses" Type="HomeworkSubmissionModel.Store.StudentsCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StudentsCourses">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Submissions_Courses">
+          <End Role="Courses" Type="HomeworkSubmissionModel.Store.Courses" Multiplicity="1" />
+          <End Role="Submissions" Type="HomeworkSubmissionModel.Store.Submissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Submissions">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Submissions_Students">
+          <End Role="Students" Type="HomeworkSubmissionModel.Store.Students" Multiplicity="1" />
+          <End Role="Submissions" Type="HomeworkSubmissionModel.Store.Submissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Submissions">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Submissions_Topics">
+          <End Role="Topics" Type="HomeworkSubmissionModel.Store.Topics" Multiplicity="1" />
+          <End Role="Submissions" Type="HomeworkSubmissionModel.Store.Submissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topics">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Submissions">
+              <PropertyRef Name="TopicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Topics_Courses">
+          <End Role="Courses" Type="HomeworkSubmissionModel.Store.Courses" Multiplicity="1" />
+          <End Role="Topics" Type="HomeworkSubmissionModel.Store.Topics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Topics">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HomeworkSubmissionModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="HomeworkSubmissionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Courses" EntityType="HomeworkSubmissionModel.Cours" />
+          <EntitySet Name="Students" EntityType="HomeworkSubmissionModel.Student" />
+          <EntitySet Name="Submissions" EntityType="HomeworkSubmissionModel.Submission" />
+          <EntitySet Name="sysdiagrams" EntityType="HomeworkSubmissionModel.sysdiagram" />
+          <EntitySet Name="Topics" EntityType="HomeworkSubmissionModel.Topic" />
+          <EntitySet Name="Users" EntityType="HomeworkSubmissionModel.User" />
+          <AssociationSet Name="FK_Submissions_Courses" Association="HomeworkSubmissionModel.FK_Submissions_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Submissions" EntitySet="Submissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Topics_Courses" Association="HomeworkSubmissionModel.FK_Topics_Courses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Topics" EntitySet="Topics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Submissions_Students" Association="HomeworkSubmissionModel.FK_Submissions_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Submissions" EntitySet="Submissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Submissions_Topics" Association="HomeworkSubmissionModel.FK_Submissions_Topics">
+            <End Role="Topics" EntitySet="Topics" />
+            <End Role="Submissions" EntitySet="Submissions" />
+          </AssociationSet>
+          <AssociationSet Name="StudentsCourses" Association="HomeworkSubmissionModel.StudentsCourses">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cours">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Submissions" Relationship="HomeworkSubmissionModel.FK_Submissions_Courses" FromRole="Courses" ToRole="Submissions" />
+          <NavigationProperty Name="Topics" Relationship="HomeworkSubmissionModel.FK_Topics_Courses" FromRole="Courses" ToRole="Topics" />
+          <NavigationProperty Name="Students" Relationship="HomeworkSubmissionModel.StudentsCourses" FromRole="Courses" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="AcademyID" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Submissions" Relationship="HomeworkSubmissionModel.FK_Submissions_Students" FromRole="Students" ToRole="Submissions" />
+          <NavigationProperty Name="Courses" Relationship="HomeworkSubmissionModel.StudentsCourses" FromRole="Students" ToRole="Courses" />
+        </EntityType>
+        <EntityType Name="Submission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="TopicID" Type="Int32" Nullable="false" />
+          <Property Name="UploadDate" Type="DateTime" Nullable="false" />
+          <Property Name="Extension" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FilePath" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Cours" Relationship="HomeworkSubmissionModel.FK_Submissions_Courses" FromRole="Submissions" ToRole="Courses" />
+          <NavigationProperty Name="Student" Relationship="HomeworkSubmissionModel.FK_Submissions_Students" FromRole="Submissions" ToRole="Students" />
+          <NavigationProperty Name="Topic" Relationship="HomeworkSubmissionModel.FK_Submissions_Topics" FromRole="Submissions" ToRole="Topics" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Topic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ActiveFrom" Type="DateTime" />
+          <Property Name="ActiveTo" Type="DateTime" />
+          <NavigationProperty Name="Cours" Relationship="HomeworkSubmissionModel.FK_Topics_Courses" FromRole="Topics" ToRole="Courses" />
+          <NavigationProperty Name="Submissions" Relationship="HomeworkSubmissionModel.FK_Submissions_Topics" FromRole="Topics" ToRole="Submissions" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Submissions_Courses">
+          <End Role="Courses" Type="HomeworkSubmissionModel.Cours" Multiplicity="1" />
+          <End Role="Submissions" Type="HomeworkSubmissionModel.Submission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Submissions">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Topics_Courses">
+          <End Role="Courses" Type="HomeworkSubmissionModel.Cours" Multiplicity="1" />
+          <End Role="Topics" Type="HomeworkSubmissionModel.Topic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Topics">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Submissions_Students">
+          <End Role="Students" Type="HomeworkSubmissionModel.Student" Multiplicity="1" />
+          <End Role="Submissions" Type="HomeworkSubmissionModel.Submission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Submissions">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Submissions_Topics">
+          <End Role="Topics" Type="HomeworkSubmissionModel.Topic" Multiplicity="1" />
+          <End Role="Submissions" Type="HomeworkSubmissionModel.Submission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topics">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Submissions">
+              <PropertyRef Name="TopicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StudentsCourses">
+          <End Role="Courses" Type="HomeworkSubmissionModel.Cours" Multiplicity="*" />
+          <End Role="Students" Type="HomeworkSubmissionModel.Student" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HomeworkSubmissionModelStoreContainer" CdmEntityContainer="HomeworkSubmissionEntities">
+          <EntitySetMapping Name="Courses"><EntityTypeMapping TypeName="HomeworkSubmissionModel.Cours"><MappingFragment StoreEntitySet="Courses">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Students"><EntityTypeMapping TypeName="HomeworkSubmissionModel.Student"><MappingFragment StoreEntitySet="Students">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="AcademyID" ColumnName="AcademyID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Submissions"><EntityTypeMapping TypeName="HomeworkSubmissionModel.Submission"><MappingFragment StoreEntitySet="Submissions">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+            <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+            <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+            <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+            <ScalarProperty Name="Extension" ColumnName="Extension" />
+            <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams"><EntityTypeMapping TypeName="HomeworkSubmissionModel.sysdiagram"><MappingFragment StoreEntitySet="sysdiagrams">
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+            <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+            <ScalarProperty Name="version" ColumnName="version" />
+            <ScalarProperty Name="definition" ColumnName="definition" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Topics"><EntityTypeMapping TypeName="HomeworkSubmissionModel.Topic"><MappingFragment StoreEntitySet="Topics">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+            <ScalarProperty Name="ActiveFrom" ColumnName="ActiveFrom" />
+            <ScalarProperty Name="ActiveTo" ColumnName="ActiveTo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="HomeworkSubmissionModel.User"><MappingFragment StoreEntitySet="Users">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="StudentsCourses" TypeName="HomeworkSubmissionModel.StudentsCourses" StoreEntitySet="StudentsCourses">
+            <EndProperty Name="Courses">
+              <ScalarProperty Name="ID" ColumnName="CourseID" />
+            </EndProperty>
+            <EndProperty Name="Students">
+              <ScalarProperty Name="ID" ColumnName="StudentID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="HomeworkSubmission" ZoomLevel="55">
+        <EntityTypeShape EntityType="HomeworkSubmissionModel.Cours" Width="1.5" PointX="0.75" PointY="4.5" Height="1.9436327856779094" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeworkSubmissionModel.Student" Width="1.5" PointX="3" PointY="2.875" Height="2.1104947618643433" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeworkSubmissionModel.Submission" Width="1.5" PointX="5.25" PointY="5.875" Height="2.6110806904236465" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeworkSubmissionModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" Height="1.7767708094914756" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeworkSubmissionModel.Topic" Width="1.5" PointX="3" PointY="9.125" Height="2.2773567380507771" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeworkSubmissionModel.User" Width="1.5" PointX="5.625" PointY="3.25" Height="2.1104947618643441" IsExpanded="true" />
+        <AssociationConnector Association="HomeworkSubmissionModel.FK_Submissions_Courses" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.1593163928389547" />
+          <ConnectorPoint PointX="3.6666666666666665" PointY="6.1593163928389538" />
+          <ConnectorPoint PointX="3.8333333333333335" PointY="6.1593163928389547" />
+          <ConnectorPoint PointX="5.25" PointY="6.1593163928389547" />
+        </AssociationConnector>
+        <AssociationConnector Association="HomeworkSubmissionModel.FK_Topics_Courses" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="6.4436327856779094" />
+          <ConnectorPoint PointX="1.5" PointY="10.263678369025389" />
+          <ConnectorPoint PointX="3" PointY="10.263678369025389" />
+        </AssociationConnector>
+        <AssociationConnector Association="HomeworkSubmissionModel.FK_Submissions_Students" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="4.9854947618643433" />
+          <ConnectorPoint PointX="3.75" PointY="7.3539510416313014" />
+          <ConnectorPoint PointX="5.25" PointY="7.3539510416313014" />
+        </AssociationConnector>
+        <AssociationConnector Association="HomeworkSubmissionModel.FK_Submissions_Topics" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="10.263678369025389" />
+          <ConnectorPoint PointX="6" PointY="10.263678369025389" />
+          <ConnectorPoint PointX="6" PointY="8.4860806904236465" />
+        </AssociationConnector>
+        <AssociationConnector Association="HomeworkSubmissionModel.StudentsCourses" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.7427473809321716" />
+          <ConnectorPoint PointX="3" PointY="4.7427473809321716" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

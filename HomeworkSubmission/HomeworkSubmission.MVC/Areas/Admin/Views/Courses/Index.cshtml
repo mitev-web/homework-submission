@@ -1,0 +1,47 @@
+﻿@using System.IO;
+@model IEnumerable<HomeworkSubmission.DAL.Cours>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Courses Admin Page</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+        <th>Download All Submissions</th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID })
+        </td>
+        <td>
+        @if (Directory.Exists(Server.MapPath("~/Uploads/") + item.ID + "_COURSE"))
+        {
+            @Html.ActionLink("Download All", "../Submissions/GetAllForCourse", new { courseID = item.ID })
+        }
+        </td>
+    </tr>
+}
+
+</table>

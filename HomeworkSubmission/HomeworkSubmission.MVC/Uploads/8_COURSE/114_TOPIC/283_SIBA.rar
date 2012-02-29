@@ -1,0 +1,139 @@
+
+#	Name	Score	Career
+1	V. Stankova	102.72	Software Developer
+2	L. Tsonov	101.10	Software Developer
+3	K. Tashkov	87.67	Software Developer
+4	N. Valchev	84.25	Software Developer
+5	M. Stefanov	78.79	Software Developer
+6	I. Nenchovski	74.67	Software Developer
+7	G. Stoyanov	73.99	Software Developer
+8	V. Bukurov	68.45	QA Software Engineer
+9	M. Rogelov	66.94	Software Developer
+10	M. Penkov	66.08	Software Developer
+11	M. Marinov	65.42	QA Software Engineer
+12	V. Staikov	64.86	Software Developer
+13	S. Stoyanov	63.25	Software Developer
+14	S. Vladimirov	63.01	QA Software Engineer
+15	D. Madjarov	62.12	Software Developer
+16	S. Radkov	61.07	Software Developer
+17	Z. Branzov	59.33	Developer Support
+18	N. Petrova	58.51	Software Developer
+19	G. Vaklinov	57.64	QA Software Engineer
+20	N. Demirev	57.42	Software Developer
+21	K. Nikolov	56.79	Software Developer
+22	K. Vandov	56.70	Software Developer
+23	D. Tachev	55.71	Software Developer
+24	B. Nistorov	54.92	Software Developer
+25	H. Marinov	54.75	Software Developer
+26	G. Mitev	54.36	Software Developer
+27	P. Kolev	53.22	Software Developer
+28	M. Vasilev	52.92	Software Developer
+29	G. Mateev	51.82	Software Developer
+30	M. Draganov	50.70	Software Developer
+31	M. Yankov	50.32	Software Developer
+32	A. Sotirov	49.75	Software Developer
+33	E. Yusein	49.60	Developer Support
+34	S. Dimitrov	49.25	Software Developer
+35	B. Statev	47.15	Software Developer
+36	K. Popov	46.65	Software Developer
+37	S. Bogdanova	46.41	QA Software Engineer
+38	D. Bakalov	46.23	QA Software Engineer
+39	A. Bogdanov	45.82	Software Developer
+40	E. Gencheva	44.80	QA Software Engineer
+41	S. Gochev	44.68	Software Developer
+42	G. Georgiev	44.52	Software Developer
+43	A. Angelov	44.49	Software Developer
+44	K. Dimitrov	43.66	Software Developer
+45	V. Tsenev	43.08	Software Developer
+46	I. Babalev	42.25	Software Developer
+47	K. Georgiev	41.78	QA Software Engineer
+48	P. Valchev	41.63	QA Software Engineer
+49	A. Valchev	41.55	Developer Support
+50	V. Kirilov	40.50	Software Developer
+51	N. Velikov	40.38	QA Software Engineer
+52	K. Kotorov	40.17	Software Developer
+53	S. Tacheva	40.11	Developer Support
+54	V. Bojinov	39.49	Software Developer
+55	T. Iliev	38.86	Software Developer
+56	N. Stoychev	38.68	Software Developer
+57	K. Gatev	38.49	QA Software Engineer
+58	V. Iliev	37.68	Software Developer
+59	M. Georgiev	37.66	QA Software Engineer
+60	I. Ivanov	37.08	Software Developer
+61	I. Kolchagov	36.86	Software Developer
+62	F. Havaluova	35.91	Software Developer
+63	M. Gebov	35.42	Software Developer
+64	M. Karamachev	33.80	Software Developer
+65	I. Stoyanov	33.70	Software Developer
+66	P. Varbanov	33.02	QA Software Engineer
+67	V. Amiorkov	32.75	Software Developer
+68	A. Djenkov	32.50	Software Developer
+69	S. Chonov	32.50	Software Developer
+70	V. Shterev	31.83	Developer Support
+71	N. Bankin	31.67	Software Developer
+72	B. Zhelyazkov	31.65	QA Software Engineer
+73	A. Petrov	31.65	Software Developer
+74	F. Fischbach	31.43	QA Software Engineer
+75	S. Georgieva-Hristova	31.33	Software Developer
+76	D. Zhelyazkov	30.75	Developer Support
+77	T. Mitev	30.67	Software Developer
+78	I. Angelov	30.41	QA Software Engineer
+79	N. Angelov	29.95	Developer Support
+80	A. Kolev	29.85	Software Developer
+81	G. Sinekliev	29.67	Software Developer
+82	I. Dyankov	29.67	Software Developer
+83	K. Dimitrov	29.36	Developer Support
+84	B. Gutsev	29.12	QA Software Engineer
+85	K. Dayradzhiev	28.75	Software Developer
+86	D. Vasilev	28.67	Software Developer
+87	D. Boikliev	28.45	Software Developer
+88	V. Vulkov	28.08	Developer Support
+89	S. Markov	27.75	Software Developer
+90	A. Kirev	27.52	QA Software Engineer
+91	T. Kirchev	27.43	Developer Support
+92	V. Hristov	27.16	QA Software Engineer
+93	P. Sotirova	26.31	Developer Support
+94	D. Agayna	26.23	Developer Support
+95	V. Kotseva	26.17	QA Software Engineer
+96	V. Stanev	26.05	Developer Support
+97	D. Todorov	25.63	QA Software Engineer
+98	N. Ilieva	25.35	Developer Support
+99	A. Georgieva	25.23	QA Software Engineer
+100	N. Mehmed	24.99	Developer Support
+101	K. Gitsov	24.86	QA Software Engineer
+102	B. Dimitrov	24.50	Developer Support
+103	B. Boev	24.25	QA Software Engineer
+104	P. Stanev	23.96	QA Software Engineer
+105	N. Avramov	23.90	QA Software Engineer
+106	T. Stoyanov	23.81	Developer Support
+107	V. Tabakov	23.80	QA Software Engineer
+108	A. Petkov	23.55	Developer Support
+109	M. Ivanov	23.17	Developer Support
+110	M. Ninov	22.84	Software Developer
+111	T. Todorov	22.21	QA Software Engineer
+112	P. Benov	21.35	Developer Support
+113	J. Stoyanova	21.14	Developer Support
+114	G. Petrov	21.06	Developer Support
+115	A. Venchev	20.75	QA Software Engineer
+116	V. Raikova	20.56	Developer Support
+117	V. Dimitrova	20.33	Developer Support
+118	S. Stoyanov	19.83	Developer Support
+119	A. Lazarov	19.83	QA Software Engineer
+120	O. Ivanov	19.67	Developer Support
+121	V. Dakov	19.50	QA Software Engineer
+122	P. Asenov	18.92	Developer Support
+123	G. Genev	18.00	Developer Support
+124	P. Pavlov	17.73	Developer Support
+125	V. Banov	17.33	Developer Support
+126	D. Petkov	16.95	QA Software Engineer
+127	N. Dimitrov	16.89	QA Software Engineer
+128	J. Ivanova	16.50	QA Software Engineer
+129	R. Totalov	16.44	Developer Support
+130	D. Kralev	15.50	QA Software Engineer
+131	B. Boevski	15.07	Developer Support
+132	T. Lilyanova	15.00	Software Developer
+133	P. Kirov	14.75	Developer Support
+134	Y. Krumov	14.33	Developer Support
+135	M. Petrova	13.10	Developer Support
+136	R. Radev	12.33	Developer Support
+137	I. Gergov	12.04	Developer Support
